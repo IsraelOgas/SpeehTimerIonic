@@ -1,0 +1,19 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Ajustes
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item>
+      <ion-label>Conexión predeterminada</ion-label>
+      <ion-select [(ngModel)]="conection" okText="Guardar" cancelText="Cancelar">
+        <ion-option value="wifi">Wi-Fi</ion-option>
+        <ion-option value="bluetooth">Blueetoth</ion-option>
+      </ion-select>
+    </ion-item>
+  </ion-list>
+</ion-content>

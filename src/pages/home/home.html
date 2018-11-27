@@ -1,0 +1,45 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Cronómetro</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+    
+  <timer #timer [timeInSeconds]="initialTime"></timer>
+
+  <!-- <ion-card>
+    <ion-card-header>
+      <ion-row>
+        <ion-col class="flex">
+          <button ion-fab mini color="secondary">
+            <ion-icon name="add"></ion-icon>
+          </button>
+          <ion-datetime displayFormat="HH:mm:ss" pickerFormat="HH mm ss"  [(ngModel)]="timeInSeconds" (ngModelChange)="parseTime($event)"></ion-datetime>
+        </ion-col>
+        <ion-col class="flex">
+          <button ion-fab mini color="tertiary">
+            <ion-icon name="add" color="white"></ion-icon>
+          </button>
+          <ion-datetime displayFormat="HH:mm:ss" pickerFormat="HH mm ss" [(ngModel)]="alerts.yellowAlert"></ion-datetime>
+        </ion-col>
+        <ion-col class="flex">
+          <button ion-fab mini color="danger">
+            <ion-icon name="add"></ion-icon>
+          </button>
+          <ion-datetime displayFormat="HH:mm:ss" pickerFormat="HH mm ss" [(ngModel)]="alerts.redAlert"></ion-datetime>
+        </ion-col>
+
+      </ion-row>
+    </ion-card-header>
+
+    <round-progress [current]="current" [max]="max" [color]="'#45ccce'" [background]="'#eaeaea'" [radius]="125"
+      [stroke]="20" [semicircle]="false" [rounded]="true" [clockwise]="false" [responsive]="true" [duration]="800"
+      [animation]="'easeInOutQuart'" [animationDelay]="0" (onRender)="doSomethingWithCurrentValue($event)"></round-progress>
+  </ion-card> -->
+ 
+</ion-content>
+
+
+  

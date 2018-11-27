@@ -1,0 +1,81 @@
+<ion-card *ngIf="timer">
+    <ion-card>
+        <ion-card-content text-center padding> 
+            <ion-item class="no-bottom-border item">
+                <button ion-button large full clear class="timer-button timer-text">{{timer.displayTime}}</button>
+            </ion-item>
+        </ion-card-content>
+    </ion-card>
+    
+    <!-- <ion-item class="no-bottom-border item">
+        <button ion-button *ngIf="timeInSeconds && timeInSeconds >= 0" large full clear class="timer-button timer-text">{{timer.displayTime}}</button>
+    </ion-item> -->
+
+    <ion-item class="no-bottom-border" *ngIf="timeInSeconds && timeInSeconds > 0">
+        <button ion-button icon-left clear color="danger" small (click)="initTimer()" item-left *ngIf="!timer.runTimer && (timer.hasStarted || timer.hasFinished) || timer.hasFinished">
+            <ion-icon name="refresh"></ion-icon>
+            Reiniciar
+        </button>
+        <button ion-button icon-left clear small color="dark" (click)="pauseTimer()" item-right *ngIf="timer.runTimer && timer.hasStarted && !timer.hasFinished">
+            <ion-icon name="pause"></ion-icon>
+            Pausar
+        </button>
+        <button ion-button icon-left clear small color="primary" (click)="resumeTimer()" item-right *ngIf="!timer.runTimer && timer.hasStarted && !timer.hasFinished">
+            <ion-icon name="play"></ion-icon>
+            Reanudar
+        </button>
+        <button ion-button icon-left clear small color="secondary" (click)="startTimer()" item-right *ngIf="!timer.hasStarted">
+            <ion-icon name="play"></ion-icon>
+            Iniciar
+        </button>
+    </ion-item>
+
+    <!-- {{timeInSeconds}} -->
+    <ion-row>
+        <ion-col class="flex">
+            <button ion-fab mini color="secondary">
+                <ion-icon name="add"></ion-icon>
+            </button>
+            <ion-datetime displayFormat="HH:mm:ss" pickerFormat="HH mm ss" [(ngModel)]="alerts.greenAlert"
+                (ngModelChange)="parseTime($event)" doneText="Aceptar" cancelText="Cancelar"></ion-datetime>
+        </ion-col>
+        <ion-col class="flex">
+            <button ion-fab mini color="tertiary">
+                <ion-icon name="add" color="white"></ion-icon>
+            </button>
+            <ion-datetime displayFormat="HH:mm:ss" pickerFormat="HH mm ss" [(ngModel)]="alerts.yellowAlert" (ngModelChange)="verifyAlert($event)" doneText="Aceptar" cancelText="Cancelar"></ion-datetime>
+        </ion-col>
+        <ion-col class="flex">
+            <button ion-fab mini color="danger">
+                <ion-icon name="add"></ion-icon>
+            </button>
+            <ion-datetime displayFormat="HH:mm:ss" pickerFormat="HH mm ss" [(ngModel)]="alerts.redAlert" (ngModelChange)="verifyAlert($event)" doneText="Aceptar" cancelText="Cancelar"></ion-datetime>
+        </ion-col>
+
+    </ion-row>
+
+    <ion-grid style="height: 100%">
+        <ion-row justify-content-center align-items-center padding style=" border-radius: 50%;">
+            <round-progress [current]="timer.secondsRemaining" [max]="max" [color]="color" [background]="'#eaeaea'"
+                [radius]="125" [stroke]="stroke" [semicircle]="true" [rounded]="true" [clockwise]="true" [responsive]="true"
+                [duration]="800" [animation]="'easeOutCubic'" [animationDelay]="0">
+            </round-progress>
+        </ion-row>
+    </ion-grid>
+
+    <!-- <round-progress [current]="timer.secondsRemaining" [max]="max" [color]="'#00C853'" [background]="'#eaeaea'"
+        [radius]="125" [stroke]="20" [semicircle]="false" [rounded]="true" [clockwise]="false" [responsive]="false"
+        [duration]="800" [animation]="'easeOutCubic'" [animationDelay]="0"></round-progress> -->
+</ion-card>
+
+<style>
+    .timer-button {
+        font-size: 5rem !important;
+        height: 1em !important;
+    }
+
+    .no-bottom-border.item .item-inner {
+        border-bottom: none !important;
+    }
+
+</style>

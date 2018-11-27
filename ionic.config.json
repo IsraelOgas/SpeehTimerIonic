@@ -1,0 +1,7 @@
+{
+  "name": "SpeechTimer",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular"
+}
